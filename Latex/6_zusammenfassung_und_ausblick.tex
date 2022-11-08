@@ -1,0 +1,55 @@
+% !TEX root = Hauptdatei.tex
+\section{Zusammenfassung und Ausblick}\label{ausblick}
+%Zusammenfassung
+
+%Architektur
+Das Ziel der Arbeit bestand darin, ein Konzept für Instrument Cluster zu entwickeln und umzusetzen. In Kapitel 3 wurde dazu eine mögliche Softwarearchitektur nach dem \ac{MVC}-Muster erarbeitet. Diese Softwarearchitektur ist nach den Vorgaben des \ac{MVC}-Musters entwickelt worden. Die Architektur soll außerdem die Möglichkeit geben, große Teile der Software immer wieder zu verwenden um den Entwicklungsaufwand zu minimieren.\\
+
+Die View ist im Zusammenhang mit Qt dadurch komplett losgelöst vom Model. Theoretisch muss das Model nur einmal entwickelt werden und kann dann für jedes weitere Projekt benutzt werden. Die View holt sich die Daten, die sie benötigt aus dem Model und stellt alles grafisch dar. Mit ein und dem selben Model können allerdings mehrere verschiedene Views bedient werden, so wie es das \ac{MVC}-Muster vorsieht. Die komplette Logik liegt dabei im Model, lediglich designspezifische Berechnungen werden in der View durchgeführt.\\
+
+%Toolsuche
+Ein weiteres Ziel der Arbeit, war es ein geeignetes Tool für die Umsetzung zu finden. Dafür wurden verschiedene Use Cases definiert, um eine Vergleichbarkeit zu schaffen. Insgesamt wurden zwei Tools getestet zum einen Storyboard und zum anderen Qt. Die Use Cases wurden in beiden Frameworks umgesetzt. Der Gewinner dieses Vergleichs war Qt, da alle wichtigen Use Cases umgesetzt werden konnten, im Gegensatz zu Storyboard.\\
+
+%Umsetzung
+Die Umsetzung der einzelnen Entwurfsmuster erfolgte in Qt zum einen in C++ oder durch Qt eigene Funktionen. In Tabelle \ref{tab:patterns_model} ist eine Übersicht über die Umsetzung der Entwurfsmuster des Models dargestellt. Für das Model konnten alle im Konzept vorgesehenen Entwurfsmuster verwendet werden.\\
+
+\begin{table}[htb]
+	\caption[Umsetzung der Entwurfsmuster (View)]{Umsetzung der Entwurfsmuster (Model)}
+	\label{tab:patterns_model}
+	\centering
+	\small
+	\begin{tabular}{|l|c|}
+		\hline
+		Entwurfsmuster & Umsetzung \\ \hline
+		Factory    & reines C++   \\ \hline
+		Singleton & reines C++ \\ \hline
+		Observer  & Signals \& Slots bzw. Properties  \\ \hline
+	\end{tabular}
+\end{table}
+
+Der Controller nutzt ebenfalls alle vorher festgelegten Entwurfsmuster. In Tabelle \ref{tab:patterns_controller} ist hierfür eine Übersicht der Entwurfsmuster des Controllers aufgelistet. Das State-Entwurfsmuster z.B. kann durch zwei verschiedene Möglichkeiten umgesetzt werden. Zum einen durch die QState-Klasse von Qt oder durch die State-Funktion im Qt Design Studio.\\
+
+\begin{table}[htb]
+	\caption[Umsetzung der Entwurfsmuster (Controller)]{Umsetzung der Entwurfsmuster (Controller)}
+	\label{tab:patterns_controller}
+	\centering
+	\small
+	\begin{tabular}{|l|c|}
+		\hline
+		Entwurfsmuster & Umsetzung \\ \hline
+		Factory    & reines C++   \\ \hline
+		Singleton & reines C++ \\ \hline
+ 		Observer  & Signals \& Slots bzw. Properties  \\ \hline
+ 		State & QState bzw. State-Funktion (Qt Design Studio) \\ \hline
+		
+	\end{tabular}
+\end{table}
+
+Für die View kann keine Übersicht erstellt werden, da alles im Qt Design Studio umgesetzt wurde. Hier werden die Entwurfsmuster nicht sichtbar angewandt. Die Umsetzung passiert intern, daher ist von außen nicht einsehbar welche Entwurfsmuster wie verwendet werden. Allerdings lässt sich erkennen wie das Beobachter-Muster umgesetzt wurde. Durch das Property-System ist es der View möglich, die Daten aus dem Model einzulesen. Dieses Muster ist jedoch das einzige, dass sich beobachten lässt.\\
+
+%Ausblick
+Um die Erkenntnisse zu validieren, müsste ein voll umfängliches Projekt mit Qt und der erarbeiteten Architektur umgesetzt werden. Das entwickeln der View könnte dadurch vereinfacht werden, indem verschiedene Module in QML-Dateien umgesetzt und an einem zentralen Ort gespeichert werden. Diese QML-Dateien könnten dadurch immer wieder verwendet werden, nur die Grafiken müssten ausgetauscht werden. Ein Nadelinstrument beispielsweise funktioniert immer ähnlich. Es verändern sich die Grafiken und eventuell der Bereich, in dem sich die Nadel bewegt. Die Nadel bewegt sich immer kreisförmig. Ein Variante der Geschwindigkeitsanzeige wäre ein Balken der sich füllt. Diese Art von Geschwindigkeitsanzeige benötigt eine neue QML-Datei, welche später aber ebenfalls wiederverwendet werden kann. Durch die Zerteilung in einzelne Komponenten ergibt sich die Möglichkeit, die Komponenten die benötigt werden zusammen zu kopieren. Das heißt es könnte einen Assistenten geben, der eine komplette Auswahl an Komponenten bietet, aus der ausgewählt wird, was für das Projekt benötigt wird. Das Projekt kann quasi zusammengeklickt werden. Im Anschluss wird ein QtCreator Projekt vom Assistenten zusammengestellt. \\
+
+
+
+  

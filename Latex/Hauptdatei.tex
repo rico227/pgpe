@@ -1,0 +1,92 @@
+% hier werden alle einstellungen und pakete geladen
+\input{latex_einstellungen/pakete}
+\usepackage{acronym}
+\definecolor{red}{rgb}{1,0,0}
+
+% start des dokuments
+\begin{document}
+
+% hier werden die Trennvorschläge inkludiert
+\input{latex_einstellungen/trennung}
+
+% Titelseite %
+\input{latex_einstellungen/deckblatt}
+
+% römische Numerierung
+\pagenumbering{roman}
+
+% 1.5 facher Zeilenabstand
+\onehalfspacing
+
+% Sperrvermerk
+\input{sperrvermerk}
+
+% Abstract / Kurzfassung
+\input{abstract}
+
+% Inhaltsverzeichnis
+\tableofcontents
+\newpage
+
+% lade alle verzeichnisse abbildungsverzeichnis, tabellenverzeichnis, listingverzeichnis, abkürzungsverzeichnis
+\input{verzeichnisse}
+
+
+%%%%%%% ANFANG %%%%%%%%%%%%
+%Seitenummerierung in arabischen Zahlen
+\pagenumbering{arabic}
+
+% 1,5 facher Zeilenabstand
+\onehalfspacing
+
+% einzelne Abschnitte
+\input{agile_prosa.tex}
+% \input{1_einleitung}
+% \newpage
+% \input{2_stand_der_technik}
+% \newpage
+% \input{3_anforderungen_an_das_konzept}
+% \newpage
+% \input{4_hmi_tool}
+% \input{5_implementierung_des_konzepts}
+% \newpage
+% \input{6_zusammenfassung_und_ausblick}
+% \newpage
+
+
+
+%\input{7_zusammenfassung_und_ausblick}
+
+%%%%%%% ENDE %%%%%%%%%%%%
+
+%\input{beispiel}
+
+% einfacher Zeilenabstand
+\singlespacing
+
+% Literaturliste soll im Inhaltsverzeichnis auftauchen
+\newpage
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+% Literaturverzeichnis anzeigen
+\renewcommand\refname{Literaturverzeichnis}
+
+\bibliographystyle{ieeetr}
+\bibliography{Hauptdatei}
+
+
+% 1,5 facher Zeilenabstand
+\onehalfspacing
+
+% evtl. Anhang
+\newpage
+%\addcontentsline{toc}{section}{Anhang}
+%\fancyhead[L]{Anhang} %Kopfzeile links
+%\input{anhang/anhang}
+
+% Eidesstattliche Erklärung
+\newpage
+\addcontentsline{toc}{section}{Eidesstattliche Erklärung}
+\input{erklaerung}
+
+
+\end{document}
